@@ -77,7 +77,7 @@ object Config {
     verticalShrink = 1,
     subjectWidth = 60,
     authorNameWidth = 15,
-    commitDateWidth = 15,
+    commitDateWidth = 10,
     subjectColor = 15,
     authorNameColor = 66,
     commitDateColor = 237,

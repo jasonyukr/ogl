@@ -18,11 +18,11 @@ object Placeholders {
   object UnlimitedSubject extends Subject(None)
   case class FixedWidthSubject(width: Int) extends Subject(Some(width))
 
-  abstract class AuthorName(width: Option[Int]) extends Placeholder("%an", width)
+  abstract class AuthorName(width: Option[Int]) extends Placeholder("<%an>", width)
   object UnlimitedAuthorName extends AuthorName(None)
   case class FixedWidthAuthorName(width: Int) extends AuthorName(Some(width))
 
-  abstract class CommitDate(width: Option[Int]) extends Placeholder("%cr", width)
+  abstract class CommitDate(width: Option[Int]) extends Placeholder("(%cs)", width)
   object UnlimitedCommitDate extends CommitDate(None)
   case class FixedWidthCommitDate(width: Int) extends CommitDate(Some(width))
 
@@ -104,8 +104,8 @@ object GitLogGraph {
     Hash(),
     Separator(),
     Subject(color = subjectColor),
-    AuthorName(color = authorNameColor),
     CommitDate(color = commitDateColor),
+    AuthorName(color = authorNameColor),
     RefNames()
   )
 
@@ -117,8 +117,8 @@ object GitLogGraph {
     Hash(),
     Separator(),
     Subject(placeholder = Placeholders.FixedWidthSubject(subjectWidth), color = subjectColor),
-    AuthorName(placeholder = Placeholders.FixedWidthAuthorName(authorNameWidth), color = authorNameColor),
     CommitDate(placeholder = Placeholders.FixedWidthCommitDate(commitDateWidth), color = commitDateColor),
+    AuthorName(placeholder = Placeholders.FixedWidthAuthorName(authorNameWidth), color = authorNameColor),
     RefNames()
   )
 }
